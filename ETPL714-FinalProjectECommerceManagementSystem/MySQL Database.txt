@@ -22,6 +22,7 @@ CREATE TABLE orders (
     productId INT,
     quantity INT,
     totalPrice DOUBLE,
+    orderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (userId) REFERENCES users(userId),
     FOREIGN KEY (productId) REFERENCES products(productId)
 );
