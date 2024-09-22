@@ -1,0 +1,28 @@
+CREATE DATABASE evergentdb;
+
+USE evergentdb;
+
+CREATE TABLE users (
+    userId INT PRIMARY KEY AUTO_INCREMENT,
+    userName VARCHAR(100),
+    email VARCHAR(100),
+    password VARCHAR(100)
+);
+
+CREATE TABLE products (
+    productId INT PRIMARY KEY AUTO_INCREMENT,
+    productName VARCHAR(100),
+    price DOUBLE,
+    stock INT
+);
+
+CREATE TABLE orders (
+    orderId INT PRIMARY KEY AUTO_INCREMENT,
+    userId INT,
+    productId INT,
+    quantity INT,
+    totalPrice DOUBLE,
+    orderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userId) REFERENCES users(userId),
+    FOREIGN KEY (productId) REFERENCES products(productId)
+);
