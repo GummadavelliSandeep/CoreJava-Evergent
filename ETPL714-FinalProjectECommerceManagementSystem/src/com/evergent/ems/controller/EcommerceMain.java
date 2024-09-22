@@ -16,7 +16,7 @@ public class EcommerceMain {
 		UserBean loggedInUser = null;
 
 		while (true) {
-			System.out.println("\nWelcome to E-commerce System");
+			System.out.println("\n------------------------Welcome to E-commerce System--------------------------------");
 			System.out.println("1. Register");
 			System.out.println("2. Login");
 			System.out.println("3. Exit");
@@ -136,6 +136,7 @@ public class EcommerceMain {
 						OrderBean order = new OrderBean();
 						order.setUserId(loggedInUser.getUserId());
 						order.setProductId(selectedProduct.getProductId());
+						order.setProductName(selectedProduct.getProductName());
 						order.setQuantity(quantity);
 						order.setTotalPrice(totalPrice);
 
@@ -156,7 +157,8 @@ public class EcommerceMain {
 					List<OrderBean> orders = service.viewOrders(loggedInUser.getUserId());
 					for (OrderBean order : orders) {
 						System.out.println("Order ID: " + order.getOrderId() + ", Product ID: " + order.getProductId()
-								+ ", Quantity: " + order.getQuantity() + ", Total: Rs. " + order.getTotalPrice());
+								+ ",Product Name: " + order.getProductName() + ", Quantity: " + order.getQuantity()
+								+ ", Total: Rs. " + order.getTotalPrice());
 					}
 					break;
 
@@ -167,10 +169,9 @@ public class EcommerceMain {
 					} else {
 						System.out.println("transaction history found.");
 						for (OrderBean order : transactionHistory) {
-							System.out
-									.println("Order ID: " + order.getOrderId() + ", Product ID: " + order.getProductId()
-											+ ", Quantity: " + order.getQuantity() + ", Total Price: Rs. "
-											+ order.getTotalPrice() + ", Order Date: " + order.getOrderDate());
+							System.out.println("Order ID: " + order.getOrderId() + ", Product ID: "
+									+ order.getProductId() + ",Product Name: " + order.getProductName() + ", Quantity: "
+									+ order.getQuantity() + ", Total: Rs. " + order.getTotalPrice()+", Order Date: " + order.getOrderDate());
 						}
 					}
 					break;
@@ -180,12 +181,14 @@ public class EcommerceMain {
 						System.out.println("No transaction history found.");
 					} else {
 						for (OrderBean order : displayInvoice) {
-							System.out.println("Download Invoice");
-							System.out.println("Order Date: " + order.getOrderDate());
+							System.out.println("Invoice");
 							System.out.println("Order ID: " + order.getOrderId());
 							System.out.println("Product ID: " + order.getOrderId());
+							System.out.println("Product Name: " + order.getProductName());
 							System.out.println("Quantity: " + order.getQuantity());
 							System.out.println("Total Price: Rs: " + order.getTotalPrice());
+							System.out.println("Order Date: " + order.getOrderDate());
+							System.out.println("Thank you for shopping with us!");
 							System.out.println();
 						}
 					}

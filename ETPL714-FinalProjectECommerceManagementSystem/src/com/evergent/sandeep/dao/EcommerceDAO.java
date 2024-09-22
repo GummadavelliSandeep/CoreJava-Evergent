@@ -47,21 +47,20 @@ public class EcommerceDAO {
 		}
 		return products;
 	}
-
 	// Update product stock
-	public int updateProductStock(int productId, int stock) {
-		try {
-			Connection con = ECommerceDBConncection.getConnection();
-			String query = "UPDATE products SET stock = ? WHERE productId = ?";
-			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, stock);
-			pstmt.setInt(2, productId);
-			return pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
+		public int updateProductStock(int productId, int stock) {
+			try {
+				Connection con = ECommerceDBConncection.getConnection();
+				String query = "UPDATE products SET stock = ? WHERE productId = ?";
+				PreparedStatement pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, stock);
+				pstmt.setInt(2, productId);
+				return pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return 0;
 		}
-		return 0;
-	}
 
 	// Add a new user
 	public int addUser(UserBean user) {
@@ -106,13 +105,14 @@ public class EcommerceDAO {
 	public int addOrder(OrderBean order) {
 		try {
 			Connection con = ECommerceDBConncection.getConnection();
-			String query = "INSERT INTO orders (userId, productId, quantity, totalPrice,orderDate) VALUES (?, ?, ?, ?,?)";
+			String query = "INSERT INTO orders (userId, productId, productName, quantity, totalPrice,orderDate) VALUES (?, ?, ?, ?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, order.getUserId());
 			pstmt.setInt(2, order.getProductId());
-			pstmt.setInt(3, order.getQuantity());
-			pstmt.setDouble(4, order.getTotalPrice());
-			pstmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+			pstmt.setString(3, order.getProductName());
+			pstmt.setInt(4, order.getQuantity());
+			pstmt.setDouble(5, order.getTotalPrice());
+			pstmt.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -134,6 +134,7 @@ public class EcommerceDAO {
 				order.setOrderId(rs.getInt("orderId"));
 				order.setUserId(rs.getInt("userId"));
 				order.setProductId(rs.getInt("productId"));
+				order.setProductName(rs.getString("productName"));
 				order.setQuantity(rs.getInt("quantity"));
 				order.setTotalPrice(rs.getDouble("totalPrice"));
 				order.setOrderDate(rs.getTimestamp("orderDate"));

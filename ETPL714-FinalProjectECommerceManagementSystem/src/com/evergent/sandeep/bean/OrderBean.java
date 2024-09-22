@@ -6,6 +6,7 @@ public class OrderBean {
 	private int orderId;
 	private int userId;
 	private int productId;
+	private String productName;
 	private int quantity;
 	private double totalPrice;
 	private Date orderDate;
@@ -32,6 +33,14 @@ public class OrderBean {
 
 	public void setProductId(int productId) {
 		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public int getQuantity() {
