@@ -25,7 +25,7 @@ public class EcommerceMain {
 			scanner.nextLine(); // Consume newline
 
 			switch (choice) {
-			case 1:
+			case 1:// User Registration
 				System.out.println("Register New User");
 				UserBean user = new UserBean();
 				System.out.print("Enter Username: ");
@@ -43,7 +43,7 @@ public class EcommerceMain {
 				}
 				break;
 
-			case 2:
+			case 2:// User Login
 				System.out.println("User Login");
 				System.out.print("Enter Email: ");
 				String email = scanner.nextLine();
@@ -106,7 +106,7 @@ public class EcommerceMain {
 					}
 					break;
 
-				case 2:
+				case 2:// View Products
 					System.out.println("Available Products:");
 					List<ProductBean> products = service.viewProducts();
 					for (ProductBean product : products) {
@@ -116,7 +116,7 @@ public class EcommerceMain {
 					}
 					break;
 
-				case 3:
+				case 3:// Place Order/Product
 					System.out.print("Enter Product ID: ");
 					int productId = scanner.nextInt();
 					System.out.print("Enter Quantity: ");
@@ -151,7 +151,7 @@ public class EcommerceMain {
 					}
 					break;
 
-				case 4:
+				case 4:// View Orders
 					System.out.println("Your Orders:");
 					List<OrderBean> orders = service.viewOrders(loggedInUser.getUserId());
 					for (OrderBean order : orders) {
@@ -181,32 +181,32 @@ public class EcommerceMain {
 					} else {
 						for (OrderBean order : displayInvoice) {
 							System.out.println("Download Invoice");
-							System.out.println("Order Date: "+order.getOrderDate());
-							System.out.println("Order ID: "+order.getOrderId());
-							System.out.println("Product ID: "+order.getOrderId());
-							System.out.println("Quantity: "+order.getQuantity());
-							System.out.println("Total Price: Rs: "+order.getTotalPrice());
+							System.out.println("Order Date: " + order.getOrderDate());
+							System.out.println("Order ID: " + order.getOrderId());
+							System.out.println("Product ID: " + order.getOrderId());
+							System.out.println("Quantity: " + order.getQuantity());
+							System.out.println("Total Price: Rs: " + order.getTotalPrice());
 							System.out.println();
 						}
 					}
 					break;
 
-				case 7:
+				case 7:// Logout
 					loggedInUser = null;
 					System.out.println("Logged out successfully.");
 					break;
 
-				case 8:
+				case 8:// Exit
 					System.out.println("Goodbye!,have a nice day");
 					System.exit(0);
 					break;
 
-				default:
+				default:// Default Message
 					System.out.println("Invalid choice. Try again.");
 					break;
 				}
 			}
 		}
 	}
-	
+
 }
