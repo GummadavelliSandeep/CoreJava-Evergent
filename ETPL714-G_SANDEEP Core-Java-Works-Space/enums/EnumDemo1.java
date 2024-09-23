@@ -1,16 +1,11 @@
+
 package com.evergent.corejava.enums;
 
-enum Colors {
-	RED, GREEN, BLUE
-}
+enum Colors {RED, GREEN, BLUE}
 
-enum AbcProducts {
-	Laptops, Desktops, Tabs
-}
+enum AbcProducts{Laptops, Desktops, Tabs}
 
-enum Days {
-	Monday, Tuseday, Wenseday, Thursday, Friday, Saturday, Sunday
-}
+enum Days {Monday, Tuseday, Wenseday, Thursday, Friday, Saturday, Sunday}
 
 public class EnumDemo1 {
 
